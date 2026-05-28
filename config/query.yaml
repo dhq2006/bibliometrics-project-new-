@@ -1,15 +1,15 @@
 # 生成式人工智能在人文社科与数字人文领域 检索式 v3.0
-# 适配：Web of Science Core Collection | 2015-2025 | 最终837篇
+# 适配：Web of Science Core Collection | 2015-2026 | 最终837篇
 version: "3.0"
 date: "2026-05-28"
 database: "Web of Science Core Collection"
-time_range: [2015, 2025]
+time_range: [2015, 2026]
 document_types: ["Article", "Review Article"]
 language: "English"
 
 # 检索式四元组：对象-场景-排除-学科过滤
 query:
-  # 核心技术对象：覆盖2015-2025全周期术语
+  # 核心技术对象：覆盖2015-2026全周期术语
   object:
     - "generative AI"
     - "AIGC"
