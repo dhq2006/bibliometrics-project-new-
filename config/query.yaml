@@ -1,0 +1,81 @@
+# 生成式人工智能在人文社科与数字人文领域 检索式 v3.0
+# 适配：Web of Science Core Collection | 2015-2025 | 最终837篇
+version: "3.0"
+date: "2026-05-28"
+database: "Web of Science Core Collection"
+time_range: [2015, 2025]
+document_types: ["Article", "Review Article"]
+language: "English"
+
+# 检索式四元组：对象-场景-排除-学科过滤
+query:
+  # 核心技术对象：覆盖2015-2025全周期术语
+  object:
+    - "generative AI"
+    - "AIGC"
+    - "ChatGPT"
+    - "large language model"
+    - "LLM"
+    - "GPT"
+    - "foundation model"
+    - "generative model"
+    - "deep generative model"
+  
+  # 应用场景：精准人文社科与数字人文
+  context:
+    - "digital humanities"
+    - "computational humanities"
+    - "humanities computing"
+    - "literary studies"
+    - "historical research"
+    - "philosophical inquiry"
+    - "sociological analysis"
+    - "cultural studies"
+    - "art criticism"
+    - "educational philosophy"
+    - "language and literature"
+    - "history of science"
+    - "media studies"
+    - "communication studies"
+  
+  # 排除词：剔除纯计算机工程文献
+  exclude:
+    - "algorithm"
+    - "training"
+    - "optimization"
+    - "accuracy"
+    - "performance"
+    - "computer vision"
+    - "robotics"
+    - "autonomous driving"
+    - "chip design"
+    - "hardware"
+    - "software"
+    - "code"
+    - "programming"
+    - "fine-tuning"
+    - "inference"
+    - "benchmark"
+  
+  # WoS官方学科过滤（双重保险）
+  categories:
+    - "Humanities, Multidisciplinary"
+    - "Literature"
+    - "History"
+    - "Philosophy"
+    - "Sociology"
+    - "Communication"
+    - "Education, Educational Research"
+    - "Cultural Studies"
+    - "Art"
+    - "Language & Linguistics"
+
+# 最终布尔检索式（已在WoS验证）
+final_query: |
+  TS=("generative AI" OR "AIGC" OR "ChatGPT" OR "large language model" OR "LLM" OR "GPT" OR "foundation model" OR "generative model" OR "deep generative model")
+  AND
+  TS=("digital humanities" OR "computational humanities" OR "humanities computing" OR "literary studies" OR "historical research" OR "philosophical inquiry" OR "sociological analysis" OR "cultural studies" OR "art criticism" OR "educational philosophy" OR "language and literature" OR "history of science" OR "media studies" OR "communication studies")
+  AND NOT
+  TS=("algorithm" OR "training" OR "optimization" OR "accuracy" OR "performance" OR "computer vision" OR "robotics" OR "autonomous driving" OR "chip design" OR "hardware" OR "software" OR "code" OR "programming" OR "fine-tuning" OR "inference" OR "benchmark")
+  AND
+  WC=("Humanities, Multidisciplinary" OR "Literature" OR "History" OR "Philosophy" OR "Sociology" OR "Communication" OR "Education, Educational Research" OR "Cultural Studies" OR "Art" OR "Language & Linguistics")
