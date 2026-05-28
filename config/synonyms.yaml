@@ -1,0 +1,33 @@
+# 研究对象：生成式AI（AIGC）相关核心技术同义词
+object:
+  - "generative AI"
+  - "AIGC"
+  - "generative artificial intelligence"
+  - "generative model"
+  - "large language model"
+  - "LLM"
+  - "GPT"
+  - "diffusion model"
+  - "GAN"
+  - "generative adversarial network"
+  - "foundation model"
+
+# 应用场景：人文社科与人文计算相关同义词
+context:
+  - "humanities"
+  - "social sciences"
+  - "digital humanities"
+  - "humanities computing"
+  - "social science research"
+  - "humanities research"
+  - "cultural heritage"
+  - "historical research"
+  - "linguistic research"
+  - "sociological research"
+  - "economic research"
+  - "educational research"
+  - "humanities data analysis"
+  - "text mining"
+  - "corpus analysis"
+  - "computational humanities"
+  - "cultural analytics"
