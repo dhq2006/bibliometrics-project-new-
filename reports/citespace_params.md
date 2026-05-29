@@ -14,7 +14,6 @@
 - 聚类方法：Modularity算法
 - 剪枝策略：Pathfinder + Pruning sliced networks
 - 结果指标：Modularity Q=XXX, Silhouette=XXX
-- 可视化设置：节点大小=频次，颜色=首次出现年份（2015-2025渐变）
 
 ### 2. 机构合作图谱
 - 节点类型：Institution
