@@ -4,20 +4,29 @@ from collections import Counter
 
 def generate_correct_stats():
     """
-    修复版统计脚本：正确生成Top10作者、机构、期刊表格
-    解决了之前作者合并、机构统计错误的问题
+    终极修复版统计脚本：彻底解决多作者合并问题
+    使用正则表达式直接匹配WoS作者格式，无视分隔符错误
     """
     print("📊 正在读取清洗后的数据...")
     df = pd.read_csv("../data/processed/final.csv")
     total = len(df)
     print(f"✅ 共读取 {total} 篇有效文献")
 
-    # ====================== 1. Top10 作者统计 ======================
+    # ====================== 1. Top10 作者统计（终极修复） ======================
     print("\n📝 正在统计Top10作者...")
     authors = []
+    # WoS作者标准格式：姓氏, 名字首字母（如Bozkurt, A; Chan, CKY）
+    author_pattern = re.compile(r'[A-Za-z-]+, [A-Z]+')
+    
     for au in df['AU'].dropna():
-        # 正确分割多个作者（WoS格式："; "分隔）
-        for author in str(au).split('; '):
+        au_str = str(au).strip()
+        if not au_str:
+            continue
+        
+        # 用正则表达式直接提取所有符合格式的作者
+        # 无视分隔符是分号、空格还是其他错误字符
+        found_authors = author_pattern.findall(au_str)
+        for author in found_authors:
             author = author.strip()
             if author:
                 authors.append(author)
@@ -27,18 +36,15 @@ def generate_correct_stats():
     author_df.to_csv("../outputs/tables/top10_authors.csv", index=False, encoding='utf-8-sig')
     print("✅ Top10作者表格已生成：outputs/tables/top10_authors.csv")
 
-    # ====================== 2. Top10 机构统计 ======================
+    # ====================== 2. Top10 机构统计（已修复） ======================
     print("\n🏢 正在统计Top10机构...")
     institutions = []
     for c1 in df['C1'].dropna():
-        # 正确分割多个机构地址
         for addr in str(c1).split('; '):
             addr = addr.strip()
             if not addr:
                 continue
             
-            # 提取机构名称（去掉开头的[作者名]部分）
-            # 格式示例：[Dianova, Vera G.] Franklin Univ Switzerland, Div Business & Econ
             match = re.match(r'\[.*?\]\s*(.*?)(,|$)', addr)
             if match:
                 inst = match.group(1).strip()
@@ -50,7 +56,7 @@ def generate_correct_stats():
     inst_df.to_csv("../outputs/tables/top10_institutions.csv", index=False, encoding='utf-8-sig')
     print("✅ Top10机构表格已生成：outputs/tables/top10_institutions.csv")
 
-    # ====================== 3. Top10 期刊统计 ======================
+    # ====================== 3. Top10 期刊统计（正确） ======================
     print("\n📚 正在统计Top10期刊...")
     journal_counts = df['SO'].value_counts().head(10).reset_index()
     journal_counts.columns = ['Journal', 'Publications']
