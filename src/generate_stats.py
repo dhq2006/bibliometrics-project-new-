@@ -1,44 +1,80 @@
 import pandas as pd
-import matplotlib.pyplot as plt
-plt.rcParams['font.sans-serif'] = ['DejaVu Sans']
-plt.rcParams['axes.unicode_minus'] = False
+import re
+from collections import Counter
+
+def generate_correct_stats():
+    """
+    修复版统计脚本：正确生成Top10作者、机构、期刊表格
+    解决了之前作者合并、机构统计错误的问题
+    """
+    print("📊 正在读取清洗后的数据...")
+    df = pd.read_csv("../data/processed/final.csv")
+    total = len(df)
+    print(f"✅ 共读取 {total} 篇有效文献")
+
+    # ====================== 1. Top10 作者统计 ======================
+    print("\n📝 正在统计Top10作者...")
+    authors = []
+    for au in df['AU'].dropna():
+        # 正确分割多个作者（WoS格式："; "分隔）
+        for author in str(au).split('; '):
+            author = author.strip()
+            if author:
+                authors.append(author)
+    
+    author_counts = Counter(authors).most_common(10)
+    author_df = pd.DataFrame(author_counts, columns=['Author', 'Publications'])
+    author_df.to_csv("../outputs/tables/top10_authors.csv", index=False, encoding='utf-8-sig')
+    print("✅ Top10作者表格已生成：outputs/tables/top10_authors.csv")
+
+    # ====================== 2. Top10 机构统计 ======================
+    print("\n🏢 正在统计Top10机构...")
+    institutions = []
+    for c1 in df['C1'].dropna():
+        # 正确分割多个机构地址
+        for addr in str(c1).split('; '):
+            addr = addr.strip()
+            if not addr:
+                continue
+            
+            # 提取机构名称（去掉开头的[作者名]部分）
+            # 格式示例：[Dianova, Vera G.] Franklin Univ Switzerland, Div Business & Econ
+            match = re.match(r'\[.*?\]\s*(.*?)(,|$)', addr)
+            if match:
+                inst = match.group(1).strip()
+                if inst:
+                    institutions.append(inst)
+    
+    inst_counts = Counter(institutions).most_common(10)
+    inst_df = pd.DataFrame(inst_counts, columns=['Institution', 'Publications'])
+    inst_df.to_csv("../outputs/tables/top10_institutions.csv", index=False, encoding='utf-8-sig')
+    print("✅ Top10机构表格已生成：outputs/tables/top10_institutions.csv")
+
+    # ====================== 3. Top10 期刊统计 ======================
+    print("\n📚 正在统计Top10期刊...")
+    journal_counts = df['SO'].value_counts().head(10).reset_index()
+    journal_counts.columns = ['Journal', 'Publications']
+    journal_counts.to_csv("../outputs/tables/top10_journals.csv", index=False, encoding='utf-8-sig')
+    print("✅ Top10期刊表格已生成：outputs/tables/top10_journals.csv")
+
+    # ====================== 打印结果预览 ======================
+    print("\n" + "="*50)
+    print("📊 统计结果预览")
+    print("="*50)
+    
+    print("\n🏆 Top10 作者：")
+    for i, (author, count) in enumerate(author_counts, 1):
+        print(f"{i}. {author}: {count}篇")
+    
+    print("\n🏢 Top10 机构：")
+    for i, (inst, count) in enumerate(inst_counts, 1):
+        print(f"{i}. {inst}: {count}篇")
+    
+    print("\n📚 Top10 期刊：")
+    for i, row in journal_counts.iterrows():
+        print(f"{i+1}. {row['Journal']}: {row['Publications']}篇")
+
+    print("\n🎉 所有统计表格已成功生成！")
 
 if __name__ == "__main__":
-    df = pd.read_csv("../data/processed/final.csv")
-
-    # 1. 生成年度发文趋势图（2015-2025）
-    year_count = df['PY'].value_counts().sort_index()
-    plt.figure(figsize=(12, 6))
-    bars = plt.bar(year_count.index.astype(str), year_count.values, color='#2c7bb6', width=0.6)
-    
-    # 添加数值标签
-    for bar in bars:
-        height = bar.get_height()
-        plt.text(bar.get_x() + bar.get_width()/2., height,
-                 f'{int(height)}',
-                 ha='center', va='bottom', fontsize=12)
-    
-    plt.title('AIGC in Humanities & Digital Humanities (2015-2025)', fontsize=16, pad=20)
-    plt.xlabel('Year', fontsize=14)
-    plt.ylabel('Number of Publications', fontsize=14)
-    plt.grid(axis='y', linestyle='--', alpha=0.7)
-    plt.tight_layout()
-    plt.savefig("../outputs/figures/annual_trend.png", dpi=300, bbox_inches='tight')
-    print("✅ 年度发文趋势图已保存")
-
-    # 2. 生成Top10作者表格
-    top_authors = df['AU'].str.split('; ').explode().value_counts().head(10)
-    top_authors.to_csv("../outputs/tables/top10_authors.csv", header=['Publications'])
-    print("✅ Top10作者表已保存")
-
-    # 3. 生成Top10期刊表格
-    top_journals = df['SO'].value_counts().head(10)
-    top_journals.to_csv("../outputs/tables/top10_journals.csv", header=['Publications'])
-    print("✅ Top10期刊表已保存")
-
-    # 4. 生成Top10机构表格
-    top_institutions = df['C1'].str.extract(r'^([^,]+)')[0].value_counts().head(10)
-    top_institutions.to_csv("../outputs/tables/top10_institutions.csv", header=['Publications'])
-    print("✅ Top10机构表已保存")
-
-    print("\n🎉 M1里程碑所有产出全部生成完成！")
+    generate_correct_stats()
