@@ -212,25 +212,23 @@ bibliometrics-project-new-/
 ├─ prisma_flow.png                      # PRISMA文献筛选流程图
 └─ requirements.txt                     # Python依赖包清单
 
----
-
 ## 🚀 数据复现说明
-任何人都可以通过以下步骤完整复现本项目的所有结果：
+任何人都可以通过以下步骤完整复现本项目的所有分析结果：
 ```bash
-# 1. 克隆仓库
+# 1. 克隆远程仓库到本地
 git clone https://github.com/dhq2006/bibliometrics-project-new-.git
 
-# 2. 安装Python依赖
+# 2. 安装项目所需Python依赖包
 pip install -r requirements.txt
 
-# 3. 进入源码目录
+# 3. 切换到源代码文件夹
 cd src
 
-# 4. 完整运行数据处理与分析流程
+# 4. 按顺序运行全套数据处理、分析、报告生成脚本
 python parse_wos.py
 python clean_data.py
 python convert_to_citespace.py
 python generate_stats.py
 python generate_m1_report.py
 python generate_m2_report.py
-所有 CiteSpace 图谱的参数配置已详细记录在 reports/citespace_params.md 中，使用 CiteSpace 6.4.R2 导入 data/processed/wos_for_citespace.txt 文件，按照参数配置即可复现所有可视化图谱。
+额外说明：所有 CiteSpace 可视化图谱的详细参数全部记录在reports/citespace_params.md内；打开 CiteSpace 6.4.R2，导入data/processed/wos_for_citespace.txt，对照参数配置即可 1:1 复现全部知识图谱。
