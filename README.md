@@ -150,67 +150,67 @@
 ## 📁 完整仓库目录结构
 ```plaintext
 bibliometrics-project-new-/
-├─ config/
-│  ├─ query.yaml
-│  ├─ query_changelog.md
-│  └─ synonyms.yaml
-├─ data/
-│  ├─ processed/
-│  │  ├─ final.csv
-│  │  ├─ parsed.csv
-│  │  └─ wos_for_citespace.txt
-│  ├─ raw/
-│  │  └─ savedrecs_full.txt
-│  ├─ README.md
-│  └─ field_dictionary.md
-├─ docs/
-│  └─ ai_usage.md
-├─ outputs/
-│  ├─ figures/
-│  │  ├─ annual_trend.png
-│  │  ├─ cocitation_network.png
-│  │  ├─ institution_collab.png
-│  │  └─ keyword_cooccurrence.png
-│  └─ tables/
-│     ├─ top10_authors.csv
-│     ├─ top10_cited_references.csv
-│     ├─ top10_institutions.csv
-│     └─ top10_journals.csv
-├─ paper/
-│  └─ final_paper.md
-├─ presentation/
-│  ├─ presentation.pdf
-│  └─ presentation.pptx
-├─ reflection/
-│  ├─ personal_reflection_董恒清.md
-│  ├─ personal_reflection_马子雄.md
-│  ├─ personal_reflection_温明辉.md
-│  ├─ personal_reflection_杨永康.md
-│  ├─ personal_reflection_职明东.md
-│  └─ team_division.md
-├─ reports/
-│  ├─ citespace_params.md
-│  ├─ data_quality.md
-│  ├─ milestone1_report.md
-│  ├─ milestone2_report.md
-│  ├─ query_rationale.md
-│  └─ screening_rules.md
-├─ src/
-│  ├─ networks/
-│  │  ├─ co_citation.py
-│  │  └─ collaboration.py
-│  ├─ clean_data.py
-│  ├─ convert_to_citespace.py
-│  ├─ generate_m1_report.py
-│  ├─ generate_m2_report.py
-│  ├─ generate_prisma.py
-│  ├─ generate_stats.py
-│  └─ parse_wos.py
-├─ .gitignore
-├─ LICENSE
-├─ README.md
-├─ prisma_flow.png
-└─ requirements.txt
+├─ config/                              # 配置文件目录
+│  ├─ query.yaml                        # 完整WoS检索式（Query as Code）
+│  ├─ query_changelog.md                # 检索式迭代修改历史记录
+│  └─ synonyms.yaml                     # 关键词同义词合并规则表
+├─ data/                                # 数据目录（只读，不可修改原始数据）
+│  ├─ processed/                        # 清洗后标准化数据
+│  │  ├─ final.csv                      # 最终用于分析的837篇文献
+│  │  ├─ parsed.csv                     # 解析后的结构化数据
+│  │  └─ wos_for_citespace.txt          # CiteSpace专用导入格式文件
+│  ├─ raw/                              # 原始不可修改数据
+│  │  └─ savedrecs_full.txt             # WoS导出的原始1001篇文献
+│  ├─ README.md                         # 数据来源与处理流程说明
+│  └─ field_dictionary.md               # WoS数据库字段含义字典
+├─ docs/                                # 辅助文档目录
+│  └─ ai_usage.md                       # AI工具使用说明
+├─ outputs/                             # 分析结果输出目录
+│  ├─ figures/                          # 所有可视化图谱
+│  │  ├─ annual_trend.png               # 图1：年度发文趋势图
+│  │  ├─ cocitation_network.png         # 图4：文献共被引网络图
+│  │  ├─ institution_collab.png         # 图2：机构合作网络图
+│  │  └─ keyword_cooccurrence.png       # 图3：关键词共现聚类图
+│  └─ tables/                           # 所有统计表格
+│     ├─ top10_authors.csv              # Top10高产作者统计表
+│     ├─ top10_cited_references.csv     # 表1：Top10高被引里程碑文献表
+│     ├─ top10_institutions.csv         # Top10高产机构统计表
+│     └─ top10_journals.csv             # Top10来源期刊统计表
+├─ paper/                               # 最终课程论文目录
+│  └─ final_paper.md                    # 完整IMRaD结构课程论文终稿
+├─ presentation/                        # 答辩材料目录
+│  ├─ presentation.pdf                  # 答辩PPT PDF备份
+│  └─ presentation.pptx                 # 答辩PPT源文件
+├─ reflection/                          # 团队与个人材料目录
+│  ├─ personal_reflection_董恒清.md     # 董恒清个人学习反思
+│  ├─ personal_reflection_马子雄.md     # 马子雄个人学习反思
+│  ├─ personal_reflection_温明辉.md     # 温明辉个人学习反思
+│  ├─ personal_reflection_杨永康.md     # 杨永康个人学习反思
+│  ├─ personal_reflection_职明东.md     # 职明东个人学习反思
+│  └─ team_division.md                  # 小组整体分工说明
+├─ reports/                             # 里程碑报告目录
+│  ├─ citespace_params.md               # CiteSpace所有参数详细记录
+│  ├─ data_quality.md                   # 数据质量评估报告
+│  ├─ milestone1_report.md              # M1里程碑报告（数据与检索方案）
+│  ├─ milestone2_report.md              # M2里程碑报告（计量分析产出）
+│  ├─ query_rationale.md                # 检索式设计理由说明
+│  └─ screening_rules.md                # 文献筛选规则与纳入排除标准
+├─ src/                                 # 源代码目录
+│  ├─ networks/                         # 网络分析专用脚本
+│  │  ├─ co_citation.py                 # 文献共被引网络构建脚本
+│  │  └─ collaboration.py               # 机构/作者合作网络构建脚本
+│  ├─ clean_data.py                     # 数据清洗与去重脚本
+│  ├─ convert_to_citespace.py           # 转换为CiteSpace格式脚本
+│  ├─ generate_m1_report.py             # M1报告自动生成脚本
+│  ├─ generate_m2_report.py             # M2报告自动生成脚本
+│  ├─ generate_prisma.py                # PRISMA流程图数据生成脚本
+│  ├─ generate_stats.py                 # 统计表格自动生成脚本
+│  └─ parse_wos.py                      # WoS原始数据解析脚本
+├─ .gitignore                           # Git忽略文件
+├─ LICENSE                              # MIT开源协议
+├─ README.md                            # 本项目说明文件
+├─ prisma_flow.png                      # PRISMA文献筛选流程图
+└─ requirements.txt                     # Python依赖包清单
 
 ---
 
