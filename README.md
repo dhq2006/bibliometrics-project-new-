@@ -148,68 +148,69 @@
 ---
 
 ## 📁 完整仓库目录结构
+```plaintext
 bibliometrics-project-new-/
-├── config/ # 配置文件
-│ ├── query.yaml # 完整 WoS 检索式
-│ ├── query_changelog.md # 检索式修改历史
-│ └── synonyms.yaml # 关键词同义词合并规则
-├── data/ # 数据目录
-│ ├── processed/ # 清洗后标准化数据
-│ │ ├── final.csv # 最终 837 篇分析文献
-│ │ ├── parsed.csv # 解析后的结构化数据
-│ │ └── wos_for_citespace.txt # CiteSpace 专用输入文件
-│ ├── raw/ # 原始不可修改数据
-│ │ └── savedrecs_full.txt # WoS 原始 1001 篇文献
-│ ├── README.md # 数据来源与处理说明
-│ └── field_dictionary.md # WoS 字段含义字典
-├── docs/ # 辅助文档
-│ └── ai_usage.md # AI 工具使用说明（学术规范要求）
-├── outputs/ # 分析结果输出
-│ ├── figures/ # 所有可视化图谱
-│ │ ├── annual_trend.png
-│ │ ├── institution_collab.png
-│ │ ├── keyword_cooccurrence.png
-│ │ └── cocitation_network.png
-│ └── tables/ # 所有统计表格
-│ ├── top10_authors.csv
-│ ├── top10_cited_references.csv
-│ ├── top10_institutions.csv
-│ └── top10_journals.csv
-├── paper/ # 最终课程论文
-│ └── final_paper.md # 完整 IMRaD 结构论文
-├── presentation/ # 答辩材料
-│ ├── presentation.pptx # 答辩 PPT 源文件
-│ └── presentation.pdf # PPT PDF 备份
-├── reflection/ # 团队与个人材料
-│ ├── team_division.md # 小组分工说明
-│ ├── personal_reflection_董恒清.md
-│ ├── personal_reflection_温明辉.md
-│ ├── personal_reflection_杨永康.md
-│ ├── personal_reflection_马子雄.md
-│ └── personal_reflection_职明东.md
-├── reports/ # 里程碑报告
-│ ├── citespace_params.md # CiteSpace 所有参数详细记录
-│ ├── data_quality.md # 数据质量评估报告
-│ ├── milestone1_report.md # M1 数据与检索方案报告
-│ ├── milestone2_report.md # M2 计量分析产出报告
-│ ├── query_rationale.md # 检索式设计理由
-│ └── screening_rules.md # 文献筛选规则
-├── src/ # 源代码
-│ ├── networks/ # 网络分析专用脚本
-│ │ ├── co_citation.py
-│ │ └── collaboration.py
-│ ├── parse_wos.py # WoS 原始数据解析
-│ ├── clean_data.py # 数据清洗与去重
-│ ├── convert_to_citespace.py # 转换为 CiteSpace 格式
-│ ├── generate_stats.py # 统计表格生成
-│ ├── generate_m1_report.py # M1 报告自动生成
-│ ├── generate_m2_report.py # M2 报告自动生成
-│ └── generate_prisma.py # PRISMA 流程图数据生成
-├── .gitignore
-├── LICENSE
-├── README.md # 本文件
-├── prisma_flow.png # PRISMA 文献筛选流程图
-└── requirements.txt # Python 依赖清单
+├─ config/
+│  ├─ query.yaml
+│  ├─ query_changelog.md
+│  └─ synonyms.yaml
+├─ data/
+│  ├─ processed/
+│  │  ├─ final.csv
+│  │  ├─ parsed.csv
+│  │  └─ wos_for_citespace.txt
+│  ├─ raw/
+│  │  └─ savedrecs_full.txt
+│  ├─ README.md
+│  └─ field_dictionary.md
+├─ docs/
+│  └─ ai_usage.md
+├─ outputs/
+│  ├─ figures/
+│  │  ├─ annual_trend.png
+│  │  ├─ cocitation_network.png
+│  │  ├─ institution_collab.png
+│  │  └─ keyword_cooccurrence.png
+│  └─ tables/
+│     ├─ top10_authors.csv
+│     ├─ top10_cited_references.csv
+│     ├─ top10_institutions.csv
+│     └─ top10_journals.csv
+├─ paper/
+│  └─ final_paper.md
+├─ presentation/
+│  ├─ presentation.pdf
+│  └─ presentation.pptx
+├─ reflection/
+│  ├─ personal_reflection_董恒清.md
+│  ├─ personal_reflection_马子雄.md
+│  ├─ personal_reflection_温明辉.md
+│  ├─ personal_reflection_杨永康.md
+│  ├─ personal_reflection_职明东.md
+│  └─ team_division.md
+├─ reports/
+│  ├─ citespace_params.md
+│  ├─ data_quality.md
+│  ├─ milestone1_report.md
+│  ├─ milestone2_report.md
+│  ├─ query_rationale.md
+│  └─ screening_rules.md
+├─ src/
+│  ├─ networks/
+│  │  ├─ co_citation.py
+│  │  └─ collaboration.py
+│  ├─ clean_data.py
+│  ├─ convert_to_citespace.py
+│  ├─ generate_m1_report.py
+│  ├─ generate_m2_report.py
+│  ├─ generate_prisma.py
+│  ├─ generate_stats.py
+│  └─ parse_wos.py
+├─ .gitignore
+├─ LICENSE
+├─ README.md
+├─ prisma_flow.png
+└─ requirements.txt
 
 ---
 
