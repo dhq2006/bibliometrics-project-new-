@@ -1,19 +1,13 @@
 # 生成式人工智能在人文与数字人文领域的文献计量分析（2015-2026）
-
 ## 团队信息与项目计划
 
 ### 团队信息
 - 组长: 董恒清 (统筹协调、项目管理与最终成果审核)
-
 - 成员:
-
-- 温明辉: 负责文献检索策略制定、数据采集与预处理（检索式构建、数据导出与清洗）
-
-- 杨永康: 负责文献筛选流程设计、PRISMA报告撰写与研究空白分析
-
-- 马子雄: 负责数据质量评估、图数据模型构建与数据清洗规则制定
-
-- 职明东: 负责计量分析指标定义、知识图谱可视化与最终报告撰写及汇报
+  - 温明辉: 负责文献检索策略制定、数据采集与预处理（检索式构建、数据导出与清洗）
+  - 杨永康: 负责文献筛选流程设计、PRISMA报告撰写与研究空白分析
+  - 马子雄: 负责数据质量评估、图数据模型构建与数据清洗规则制定
+  - 职明东: 负责计量分析指标定义、知识图谱可视化与最终报告撰写及汇报
 
 ### 研究方向
 本项目聚焦于生成式人工智能（AIGC）在人文社科与人文计算领域的应用态势与发展趋势，旨在通过文献计量学与知识图谱分析方法，系统梳理该领域的研究热点、核心技术演进路径、关键研究团队与机构合作网络，揭示其在人文社科各学科中的应用模式与未来发展方向。
@@ -32,7 +26,7 @@
 
 ---
 
-## 🎯 核心文献计量成果
+## 🎯 核心研究结论总览
 ### RQ1：领域发展态势与阶段特征
 ✅ 2023年ChatGPT商业化落地是领域发展的关键拐点
 ✅ 2015-2022年处于萌芽空白期，年均发文量不足2篇
@@ -54,20 +48,69 @@
 
 ---
 
-## 📊 三图一表完整展示
+## 📊 完整可视化图谱成果
 ### 图1 年度发文趋势图（2015-2026）
 ![年度发文趋势](outputs/figures/annual_trend.png)
-> 数据来源：Web of Science核心合集；使用Python Matplotlib生成；统计了各年度发文量与增长率
+> **解读**：领域发展呈现典型的三阶段特征。2015-2022年为萌芽空白期，研究体量极小；2023年受ChatGPT商业化直接驱动进入爆发增长期；2024-2025年维持高速增长态势，2025年达到峰值439篇。整体增长曲线符合新兴技术交叉领域的发展规律。
 
 ### 图2 机构合作网络图谱
 ![机构合作网络](outputs/figures/institution_collab.png)
-> 节点大小表示发文量，节点颜色表示首次出现年份，连线表示合作关系；使用CiteSpace 6.4.R2生成
+> **解读**：全球研究力量分布极不均衡，中国香港地区高校形成了区域性研究集群，香港大学是网络中的核心节点。欧美高校研究布局零散，跨国家、跨地区的合作连线稀疏，整体网络密度仅0.012，表明学术共同体尚未完全形成。
 
 ### 图3 关键词共现聚类图谱
 ![关键词共现聚类](outputs/figures/keyword_cooccurrence.png)
-> 模块值Q=0.72，轮廓值S=0.89，聚类效果显著；划分为5个核心研究主题
+> **解读**：图谱模块值Q=0.72，轮廓值S=0.89，聚类效果显著。共识别出5大核心聚类：大语言模型与教育应用、学术诚信与伦理治理、数字人文与文化遗产、学习者认知与接受度、智慧教育与在线学习。其中高等教育应用类节点体量最大，是当前领域的绝对研究重心。
 
-### 表1 领域TOP10高被引里程碑文献表
+### 图4 文献共被引网络图谱
+![文献共被引网络](outputs/figures/cocitation_network.png)
+> **解读**：共被引网络反映了领域的知识基础与学术传承关系。核心高被引文献集中在2023-2024年，以高等教育场景的应用探讨与伦理反思为主，整体知识基础较新且高度集中，尚未形成多代际的学术传承脉络，印证了领域处于发展初期的判断。
+
+---
+
+## 📋 完整统计数据成果
+### 表1 TOP10来源期刊发文统计表
+| 排名 | 期刊全称 | 发文量 | 领域定位 |
+|------|----------|--------|----------|
+| 1 | Education and Information Technologies | 55 | 教育技术领域核心期刊，发文量遥遥领先 |
+| 2 | Education Sciences | 42 | 教育综合类开源期刊，接收量较大 |
+| 3 | TechTrends | 30 | 教育技术趋势与实践类期刊 |
+| 4 | Frontiers in Education | 26 | 综合教育类开源期刊 |
+| 5 | Computers and Education: Artificial Intelligence | 20 | 人工智能教育细分领域顶刊 |
+| 6 | Innovations in Education and Teaching International | 15 | 教学创新与教育技术应用 |
+| 7 | Cogent Education | 15 | 教育综合类开源期刊 |
+| 8 | International Journal of Technology in Education | 14 | 教育技术国际期刊 |
+| 9 | Interactive Learning Environments | 13 | 交互式学习环境研究 |
+| 10 | International Journal of Educational Technology in Higher Education | 13 | 高等教育技术专刊 |
+
+### 表2 TOP10研究机构发文统计表
+| 排名 | 机构名称 | 国家/地区 | 发文量 | 中介中心性 |
+|------|----------|-----------|--------|------------|
+| 1 | University of Hong Kong | 中国香港 | 8 | 0.18 |
+| 2 | Chinese University of Hong Kong | 中国香港 | 4 | 0.12 |
+| 3 | University of Leeds | 英国 | 3 | 0.09 |
+| 4 | Anadolu University | 土耳其 | 3 | 0.07 |
+| 5 | Education University of Hong Kong | 中国香港 | 3 | 0.06 |
+| 6 | King's College London | 英国 | 3 | 0.05 |
+| 7 | Friedrich Schiller University Jena | 德国 | 3 | 0.04 |
+| 8 | Nanyang Technological University | 新加坡 | 3 | 0.04 |
+| 9 | University of Bergen | 挪威 | 3 | 0.03 |
+| 10 | Stockholm University | 瑞典 | 3 | 0.03 |
+
+### 表3 TOP10高产作者统计表
+| 排名 | 作者 | 所属机构 | 发文量 | 核心研究方向 |
+|------|------|----------|--------|--------------|
+| 1 | Kasneci E | University of Tübingen | 5 | 大语言模型教育应用与伦理 |
+| 2 | Dwivedi YK | Swansea University | 4 | 生成式AI多领域应用综述 |
+| 3 | Lo CK | University of Hong Kong | 4 | AI素养与高等教育融合 |
+| 4 | Chan CKY | University of Hong Kong | 3 | 教育技术用户接受度研究 |
+| 5 | Tlili A | Beijing Normal University | 3 | 智能学习环境与AI应用 |
+| 6 | Cotton DRE | University of Plymouth | 3 | 教学实践变革与AI影响 |
+| 7 | Farrokhnia M | University of South Australia | 3 | 学术诚信与AI治理 |
+| 8 | Baidoo-anu D | University of Ghana | 3 | 人文研究AI伦理问题 |
+| 9 | Cooper G | University of Glasgow | 2 | 科学教育AI应用实证 |
+| 10 | Jurgen R | University of Applied Sciences | 2 | 教学模式变革框架研究 |
+
+### 表4 TOP10高被引里程碑文献统计表
 | 排名 | 作者 | 年份 | 期刊全称 | 被引频次 | 核心贡献 |
 |------|------|------|----------|----------|----------|
 | 1 | Kasneci E et al. | 2023 | Learning and Individual Differences | 146 | 系统分析ChatGPT在高等教育中的应用潜力与伦理挑战 |
@@ -87,42 +130,27 @@
 
 #### 第一阶段：数据准备与方案确立 (M1)
 - 目标: 完成高质量数据集的构建与研究方案的最终确定。
-
 - 关键任务:
-
-1. 精准检索: 基于WOS核心合集，构建并优化检索式，确保查全率与查准率。
-
-2. 数据采集: 导出包含作者、机构、关键词、参考文献等核心字段的文献数据。
-
-3. 质量评估: 完成数据质量报告，分析缺失率、重复率等关键指标。
-
-4. 筛选流程: 制定并执行三阶段文献筛选流程。
+  1. 精准检索: 基于WOS核心合集，构建并优化检索式，确保查全率与查准率。
+  2. 数据采集: 导出包含作者、机构、关键词、参考文献等核心字段的文献数据。
+  3. 质量评估: 完成数据质量报告，分析缺失率、重复率等关键指标。
+  4. 筛选流程: 制定并执行三阶段文献筛选流程。
 
 #### 第二阶段：计量分析与可视化 (M2)
 - 目标: 完成核心计量分析并生成可视化知识图谱。
-
 - 关键任务:
-
-1. 数据清洗: 执行作者、机构、关键词的消歧与标准化处理。
-
-2. 指标计算: 计算年度发文量、作者/机构合作网络、关键词共现等核心指标。
-
-3. 网络构建: 构建文献共被引网络、作者合作网络等知识图谱。
-
-4. 可视化呈现: 使用VOSviewer/CiteSpace等工具生成科学知识图谱。
+  1. 数据清洗: 执行作者、机构、关键词的消歧与标准化处理。
+  2. 指标计算: 计算年度发文量、作者/机构合作网络、关键词共现等核心指标。
+  3. 网络构建: 构建文献共被引网络、作者合作网络等知识图谱。
+  4. 可视化呈现: 使用VOSviewer/CiteSpace等工具生成科学知识图谱。
 
 #### 第三阶段：成果整合与汇报 (M3)
 - 目标: 完成最终研究报告与学术汇报。
-
 - 关键任务:
-
-1. 结果解读: 深入分析可视化结果，总结研究热点、演化趋势与关键发现。
-
-2. 报告撰写: 撰写包含研究背景、方法、结果与讨论的完整学术报告（Mini Review）。
-
-3. 可复现性优化: 确保项目代码、数据与文档的版本化管理，实现研究可复现。
-
-4. 汇报准备: 制作学术汇报PPT，准备汇报。
+  1. 结果解读: 深入分析可视化结果，总结研究热点、演化趋势与关键发现。
+  2. 报告撰写: 撰写包含研究背景、方法、结果与讨论的完整学术报告（Mini Review）。
+  3. 可复现性优化: 确保项目代码、数据与文档的版本化管理，实现研究可复现。
+  4. 汇报准备: 制作学术汇报PPT，准备汇报。
 
 ---
 
@@ -138,16 +166,9 @@
 - 可视化：CiteSpace
 - 代码托管：GitHub
 
-### 原始文件结构
-- `data/raw/`：原始WoS数据
-- `data/processed/`：清洗后数据
-- `outputs/`：CiteSpace生成的图谱结果
-- `reports/`：过程性分析报告
-- `paper/`：最终作业报告与PPT
-
 ---
 
-## 📁 完整仓库目录结构
+## 📁 完整仓库目录结构（每个文件附带功能说明）
 ```plaintext
 bibliometrics-project-new-/
 ├─ config/                              # 配置文件目录
@@ -164,7 +185,7 @@ bibliometrics-project-new-/
 │  ├─ README.md                         # 数据来源与处理流程说明
 │  └─ field_dictionary.md               # WoS数据库字段含义字典
 ├─ docs/                                # 辅助文档目录
-│  └─ ai_usage.md                       # AI工具使用说明
+│  └─ ai_usage.md                       # AI工具使用说明（学术规范强制要求）
 ├─ outputs/                             # 分析结果输出目录
 │  ├─ figures/                          # 所有可视化图谱
 │  │  ├─ annual_trend.png               # 图1：年度发文趋势图
@@ -179,7 +200,7 @@ bibliometrics-project-new-/
 ├─ paper/                               # 最终课程论文目录
 │  └─ final_paper.md                    # 完整IMRaD结构课程论文终稿
 ├─ presentation/                        # 答辩材料目录
-│  ├─ presentation.pdf                  # 答辩PPT PDF备份
+│  ├─ presentation.pdf                  # 答辩PPT PDF备份（防止打不开）
 │  └─ presentation.pptx                 # 答辩PPT源文件
 ├─ reflection/                          # 团队与个人材料目录
 │  ├─ personal_reflection_董恒清.md     # 董恒清个人学习反思
@@ -211,24 +232,3 @@ bibliometrics-project-new-/
 ├─ README.md                            # 本项目说明文件
 ├─ prisma_flow.png                      # PRISMA文献筛选流程图
 └─ requirements.txt                     # Python依赖包清单
-
-## 🚀 数据复现说明
-任何人都可以通过以下步骤完整复现本项目的所有分析结果：
-```bash
-# 1. 克隆远程仓库到本地
-git clone https://github.com/dhq2006/bibliometrics-project-new-.git
-
-# 2. 安装项目所需Python依赖包
-pip install -r requirements.txt
-
-# 3. 切换到源代码文件夹
-cd src
-
-# 4. 按顺序运行全套数据处理、分析、报告生成脚本
-python parse_wos.py
-python clean_data.py
-python convert_to_citespace.py
-python generate_stats.py
-python generate_m1_report.py
-python generate_m2_report.py
-额外说明：所有 CiteSpace 可视化图谱的详细参数全部记录在reports/citespace_params.md内；打开 CiteSpace 6.4.R2，导入data/processed/wos_for_citespace.txt，对照参数配置即可 1:1 复现全部知识图谱。
